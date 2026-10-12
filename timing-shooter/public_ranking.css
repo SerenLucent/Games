@@ -1,0 +1,24 @@
+.public-ranking-button { position:absolute; bottom:8%; left:50%; transform:translateX(-50%); z-index:95; background:#171c22; color:#ffd754; border:1px solid #ffd754; border-radius:5px; padding:10px 22px; font-size:16px; font-weight:800; }
+.public-ranking-button[hidden], .public-ranking-overlay[hidden] { display:none; }
+.public-ranking-overlay { position:absolute; inset:0; z-index:190; background:rgba(8,10,14,.97); color:#fff; padding:24px 16px; overflow-y:auto; touch-action:pan-y; }
+.public-ranking-overlay * { box-sizing:border-box; }
+.public-ranking-header { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.public-ranking-header h2 { margin:0; color:#ffd754; font-size:24px; }
+.public-ranking-close { width:40px; height:40px; border:1px solid #606671; border-radius:4px; color:white; background:#242830; font-size:24px; }
+.public-ranking-tabs { display:flex; margin:20px 0 12px; border-bottom:1px solid #565b64; }
+.public-ranking-tabs button { flex:1; padding:12px 4px; border:0; border-bottom:3px solid transparent; color:#c4c9d0; background:none; font-size:16px; }
+.public-ranking-tabs button[aria-selected=true] { color:#ffd754; border-bottom-color:#ffd754; }
+.public-ranking-status { color:#c9cfd9; min-height:24px; font-size:14px; overflow-wrap:anywhere; }
+.public-ranking-score { color:#ffd754; font-size:24px; font-weight:900; margin:14px 0; }
+.public-ranking-form { margin:12px 0 20px; }
+.public-ranking-form label { display:block; margin-bottom:8px; }
+.public-ranking-form input { width:100%; min-width:0; padding:12px; background:#252b34; color:white; border:1px solid #929ba7; border-radius:4px; font-size:16px; }
+.public-ranking-form button { width:100%; margin-top:10px; padding:12px; border:0; border-radius:4px; background:#ffd754; color:#14171d; font-size:16px; font-weight:800; }
+.public-ranking-form button:disabled { opacity:.5; }
+.public-ranking-table { width:100%; table-layout:fixed; border-collapse:collapse; font-size:15px; }
+.public-ranking-table th, .public-ranking-table td { padding:10px 5px; border-bottom:1px solid #343b45; text-align:left; overflow-wrap:anywhere; }
+.public-ranking-table th:first-child { width:38px; }
+.public-ranking-table th:last-child { width:100px; }
+.public-ranking-table td:last-child, .public-ranking-table th:last-child { text-align:right; font-variant-numeric:tabular-nums; }
+.public-ranking-table tr[data-current=true] { color:#ffd754; background:#262b33; }
+.public-ranking-empty { padding:24px 0; color:#bec5cf; text-align:center; }
