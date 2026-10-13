@@ -17,7 +17,7 @@
 .public-ranking-form button:disabled { opacity:.5; }
 .public-ranking-table { width:100%; table-layout:fixed; border-collapse:collapse; font-size:15px; }
 .public-ranking-table th, .public-ranking-table td { padding:10px 5px; border-bottom:1px solid #343b45; text-align:left; overflow-wrap:anywhere; }
-.public-ranking-table th:first-child { width:38px; }
+.public-ranking-table th:first-child { width:58px; }
 .public-ranking-table th:last-child { width:100px; }
 .public-ranking-table td:last-child, .public-ranking-table th:last-child { text-align:right; font-variant-numeric:tabular-nums; }
 .public-ranking-table tr[data-current=true] { color:#ffd754; background:#262b33; }

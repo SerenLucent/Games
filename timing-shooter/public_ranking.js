@@ -11,7 +11,7 @@
   overlay.innerHTML = '<div class="public-ranking-header"><h2>TOP 10 RANKING</h2><button type="button" class="public-ranking-close" aria-label="Close ranking">&times;</button></div>'
     + '<div class="public-ranking-score" hidden></div><form class="public-ranking-form" hidden><label for="rankingName">NAME</label><input id="rankingName" maxlength="20" autocomplete="nickname" required><button type="submit">REGISTER SCORE</button></form>'
     + '<div class="public-ranking-tabs" role="tablist"><button role="tab" aria-selected="true" data-board="weekly">주간</button><button role="tab" aria-selected="false" data-board="allTime">전체 기간</button></div>'
-    + '<div class="public-ranking-status" role="status" aria-live="polite"></div><table class="public-ranking-table" hidden><thead><tr><th>#</th><th>NAME</th><th>SCORE</th></tr></thead><tbody></tbody></table><div class="public-ranking-empty" hidden></div>';
+    + '<div class="public-ranking-status" role="status" aria-live="polite"></div><table class="public-ranking-table" hidden><thead><tr><th>RANK</th><th>NAME</th><th>SCORE</th></tr></thead><tbody></tbody></table><div class="public-ranking-empty" hidden></div>';
   stage.append(button, overlay);
   const form = overlay.querySelector('form'), input = form.querySelector('input');
   const submit = form.querySelector('button'), close = overlay.querySelector('.public-ranking-close');
