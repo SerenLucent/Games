@@ -3,7 +3,7 @@
   "game": "timing-shooter",
   "timeZone": "Asia/Seoul",
   "weekStart": "2026-10-11T15:00:00.000Z",
-  "updatedAt": "2026-10-13T03:39:36.341Z",
+  "updatedAt": "2026-10-13T04:24:22.279Z",
   "allTime": [
     {
       "runId": "dabfc5eb-9364-4188-b254-2bef79bed88d",
@@ -22,6 +22,12 @@
       "name": "RCQ",
       "score": 12680,
       "savedAt": "2026-10-13T03:39:36.341Z"
+    },
+    {
+      "runId": "2fec862f-422e-4b0f-8986-62dfabc10a5f",
+      "name": "jhg",
+      "score": 9525,
+      "savedAt": "2026-10-13T04:24:22.279Z"
     }
   ],
   "weekly": [
@@ -42,9 +48,21 @@
       "name": "RCQ",
       "score": 12680,
       "savedAt": "2026-10-13T03:39:36.341Z"
+    },
+    {
+      "runId": "2fec862f-422e-4b0f-8986-62dfabc10a5f",
+      "name": "jhg",
+      "score": 9525,
+      "savedAt": "2026-10-13T04:24:22.279Z"
     }
   ],
   "receipts": [
+    {
+      "runId": "2fec862f-422e-4b0f-8986-62dfabc10a5f",
+      "accepted": true,
+      "allTime": true,
+      "weekly": true
+    },
     {
       "runId": "5c9de9f1-4df0-41d7-90f8-20124c543303",
       "accepted": true,
