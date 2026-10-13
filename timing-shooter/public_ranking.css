@@ -1,4 +1,4 @@
-.public-ranking-button { position:absolute; bottom:8%; left:50%; transform:translateX(-50%); z-index:95; background:#171c22; color:#ffd754; border:1px solid #ffd754; border-radius:5px; padding:10px 22px; font-size:16px; font-weight:800; }
+.public-ranking-button { position:absolute; top:16px; right:16px; z-index:95; background:#171c22; color:#ffd754; border:1px solid #ffd754; border-radius:5px; padding:10px 16px; min-height:44px; font-size:16px; font-weight:800; cursor:pointer; }
 .public-ranking-button[hidden], .public-ranking-overlay[hidden] { display:none; }
 .public-ranking-overlay { position:absolute; inset:0; z-index:190; background:rgba(8,10,14,.97); color:#fff; padding:24px 16px; overflow-y:auto; touch-action:pan-y; }
 .public-ranking-overlay * { box-sizing:border-box; }
