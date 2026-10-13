@@ -1457,7 +1457,7 @@
   </style>
   <link rel="stylesheet" href="opening.css?v=guard-knockdown-3">
   <link rel="stylesheet" href="tutorial.css?v=knockdown-3">
-  <link rel="stylesheet" href="supply_crate.css?v=crate-1">
+  <link rel="stylesheet" href="supply_crate.css?v=crate-button-2">
   <link rel="stylesheet" href="hall.css?v=game-over-5">
   <link rel="stylesheet" href="hostage.css?v=hostage-ring-2">
   <link rel="stylesheet" href="dodge.css?v=thick-flash-7">
@@ -2764,10 +2764,14 @@
         storedItems[slot] = stored;
         renderInventory();
       }
-      const image = new Image();
-      image.src = item.icon;
-      image.alt = '';
+      const image = document.createElement('div');
       image.className = 'crate-reward-flight';
+      const icon = new Image();
+      icon.src = item.icon;
+      icon.alt = '';
+      const label = document.createElement('span');
+      label.textContent = slot < 0 ? '+20' : 'Lv.1';
+      image.append(icon, label);
       stage.append(image);
       const startedAt = gameRuntime.now();
       const duration = 800;
@@ -2781,9 +2785,9 @@
         const y = rect.top - stageRect.top + rect.height / 2;
         const travel = Math.max(0, (progress - 0.25) / 0.75);
         const eased = travel * travel;
-        image.style.left = `${origin.x + (x - origin.x) * eased - 22}px`;
-        image.style.top = `${origin.y + (y - origin.y) * eased - Math.sin(progress * Math.PI) * 65 - 22}px`;
-        image.style.transform = `scale(${1.2 - travel * 0.4})`;
+        image.style.left = `${origin.x + (x - origin.x) * eased - 31}px`;
+        image.style.top = `${origin.y + (y - origin.y) * eased - Math.sin(progress * Math.PI) * 65 - 31}px`;
+        image.style.transform = `scale(${1.15 - travel * 0.15})`;
         if (progress < 1) { gameRuntime.requestAnimationFrame(advance); return; }
         image.remove();
         if (slot < 0) {

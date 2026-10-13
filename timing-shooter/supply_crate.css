@@ -7,5 +7,7 @@
 .supply-crate-prompt { position:absolute; left:50%; bottom:100%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; color:#fff; font-size:14px; text-shadow:0 2px 3px #000; }
 .supply-crate-prompt img { width:30px; height:30px; animation:crate-push 180ms ease-in-out infinite alternate; }
 .supply-crate-prompt[hidden], .supply-crate-reticle[hidden] { display:none; }
-.crate-reward-flight { position:absolute; z-index:110; width:44px; height:44px; object-fit:contain; pointer-events:none; filter:drop-shadow(0 0 8px #ffe168); }
+.crate-reward-flight { position:absolute; z-index:110; width:62px; height:62px; box-sizing:border-box; padding:4px; border:1px solid #ffe0a0; border-radius:8px; background:linear-gradient(#ffdb9d, #d98e48); box-shadow:0 4px 0 #52290f94, 0 0 16px #ffb45066; pointer-events:none; }
+.crate-reward-flight img { display:block; width:100%; height:100%; object-fit:contain; }
+.crate-reward-flight span { position:absolute; right:3px; bottom:2px; font-size:10px; font-weight:900; color:#23150b; }
 @keyframes crate-push { to { transform:scale(.76); filter:brightness(1.5); } }
