@@ -1,0 +1,11 @@
+.supply-crate { position:absolute; z-index:5; transform:translate(-50%,-50%); pointer-events:none; }
+.supply-crate-body { position:absolute; inset:0; background-size:300% 200%; background-repeat:no-repeat; }
+.supply-crate-reticle { position:absolute; left:50%; top:48%; }
+.supply-crate-reticle img { position:absolute; left:0; top:0; transform:translate(-50%,-50%); }
+.supply-crate-circle, .supply-crate-perfect_target { width:52px; height:52px; }
+.supply-crate-target { width:36px; height:36px; }
+.supply-crate-prompt { position:absolute; left:50%; bottom:100%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; color:#fff; font-size:14px; text-shadow:0 2px 3px #000; }
+.supply-crate-prompt img { width:30px; height:30px; animation:crate-push 180ms ease-in-out infinite alternate; }
+.supply-crate-prompt[hidden], .supply-crate-reticle[hidden] { display:none; }
+.crate-reward-flight { position:absolute; z-index:110; width:44px; height:44px; object-fit:contain; pointer-events:none; filter:drop-shadow(0 0 8px #ffe168); }
+@keyframes crate-push { to { transform:scale(.76); filter:brightness(1.5); } }

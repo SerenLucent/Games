@@ -1457,6 +1457,7 @@
   </style>
   <link rel="stylesheet" href="opening.css?v=guard-knockdown-3">
   <link rel="stylesheet" href="tutorial.css?v=knockdown-3">
+  <link rel="stylesheet" href="supply_crate.css?v=crate-1">
   <link rel="stylesheet" href="hall.css?v=game-over-5">
   <link rel="stylesheet" href="hostage.css?v=hostage-ring-2">
   <link rel="stylesheet" href="dodge.css?v=thick-flash-7">
@@ -1610,6 +1611,7 @@
   <script src="hall_config.js?v=boss-hp-50"></script>
   <script src="hall.js?v=dodge-camera-2"></script>
   <script src="hostage.js?v=hostage-1"></script>
+  <script src="supply_crate.js?v=crate-1"></script>
   <script src="dodge.js?v=boss-dodge-1"></script>
   <script src="boss.js?v=boss-hp-50"></script>
   <script src="tutorial.js?v=knockdown-3"></script>
@@ -1657,6 +1659,7 @@
     hall.onCameraChange = () => {
       activeTargets.forEach(positionHallTarget);
       hostage.position();
+      supplyCrate.position();
     };
     let counterRetryTimer = null;
     let dodgeTurnTimer = null;
@@ -1716,7 +1719,26 @@
 
     function refreshHostageColor(change = true) {
       const magnum = hasActiveItem('magnum');
-      hostage.refreshColor(activeTargets, magnum ? false : change, magnum ? ['r'] : []);
+      hostage.refreshColor(activeTargets, magnum ? false : change,
+        [...(magnum ? ['r'] : []), ...(supplyCrate.color ? [supplyCrate.color] : [])]);
+    }
+
+    const supplyCrate = new SupplyCrate(stage, () => hall, (crate) => {
+      playJudgementSound('Good');
+      showBulletEffect(crate.x, crate.y);
+    }, deliverCrateReward);
+
+    function updateCrateInput() {
+      supplyCrate.setEnabled(gameStarted && !stageEnded && !floorTransition && !dodge.current
+        && !dodge.queue.length && !activeTargets.some(target => target.countering));
+    }
+
+    function beginCrateTurn() {
+      if (currentFloor === 4) return;
+      supplyCrate.nextTurn(activeTargets);
+      refreshHostageColor();
+      updateHostageInput();
+      updateCrateInput();
     }
 
     let spawnSlots = window.TIMING_SHOOTER_HALL.slots;
@@ -1898,7 +1920,7 @@
     }
 
     function pickRandomColor() {
-      const keys = Object.keys(colors);
+      const keys = Object.keys(colors).filter(color => color !== supplyCrate.color);
       return keys[Math.floor(Math.random() * keys.length)];
     }
 
@@ -2260,7 +2282,7 @@
     const combatPreloads = [];
     function prepareCombatAssets() {
       if (combatAssetsReady) return combatAssetsReady;
-      const sources = [...Object.values(enemySprites), 'sprites/UI/hp_frame.png',
+      const sources = [...Object.values(enemySprites), 'sprites/items/supply_crate_atlas_v1.png', 'sprites/UI/hp_frame.png',
         'sprites/effects/hit_blood_overlay.png',
         ...[1, 2, 3].map((frame) => `sprites/effects/bullet_effect_${frame}.png`),
         ...['b', 'g', 'r', 'y'].flatMap((color) =>
@@ -2711,8 +2733,8 @@
     function renderInventory() {
       inventoryButtons.forEach((button, index) => {
         const item = storedItems[index];
-        button.disabled = !item || stageEnded;
-        button.innerHTML = item ? `<img src="${item.icon}" alt=""><span>Lv.${item.level}</span>` : '';
+        button.disabled = !item || item.arriving || stageEnded;
+        button.innerHTML = item && !item.arriving ? `<img src="${item.icon}" alt=""><span>Lv.${item.level}</span>` : '';
         button.setAttribute('aria-label', item ? `Use ${item.name}, level ${item.level}` : `empty item slot ${index + 1}`);
       });
       updateItemGauge();
@@ -2721,7 +2743,7 @@
     function useStoredItem(index) {
       if (!gameStarted || stageEnded || floorTransition || gameRuntime.paused) return;
       const item = storedItems[index];
-      if (!item) return;
+      if (!item || item.arriving) return;
       storedItems[index] = null;
       announceItem(item);
       if (item.id === 'medkit') {
@@ -2731,6 +2753,48 @@
         startTimedItem(item, item.level);
       }
       renderInventory();
+    }
+
+    function deliverCrateReward(origin) {
+      const slot = storedItems.indexOf(null);
+      const item = slot < 0 ? itemDefs.find(item => item.id === 'medkit')
+        : itemDefs[Math.floor(Math.random() * itemDefs.length)];
+      const stored = { ...item, level: 1, arriving: true };
+      if (slot >= 0) {
+        storedItems[slot] = stored;
+        renderInventory();
+      }
+      const image = new Image();
+      image.src = item.icon;
+      image.alt = '';
+      image.className = 'crate-reward-flight';
+      stage.append(image);
+      const startedAt = gameRuntime.now();
+      const duration = 800;
+      const targetElement = slot < 0 ? hpFill : inventoryButtons[slot];
+      const advance = now => {
+        if (!image.isConnected || stageEnded) { image.remove(); return; }
+        const progress = Math.min(1, (now - startedAt) / duration);
+        const rect = targetElement.getBoundingClientRect();
+        const stageRect = stage.getBoundingClientRect();
+        const x = rect.left - stageRect.left + rect.width / 2;
+        const y = rect.top - stageRect.top + rect.height / 2;
+        const travel = Math.max(0, (progress - 0.25) / 0.75);
+        const eased = travel * travel;
+        image.style.left = `${origin.x + (x - origin.x) * eased - 22}px`;
+        image.style.top = `${origin.y + (y - origin.y) * eased - Math.sin(progress * Math.PI) * 65 - 22}px`;
+        image.style.transform = `scale(${1.2 - travel * 0.4})`;
+        if (progress < 1) { gameRuntime.requestAnimationFrame(advance); return; }
+        image.remove();
+        if (slot < 0) {
+          hp = Math.min(100, hp + 20);
+          updateHp();
+        } else if (storedItems[slot] === stored) {
+          delete stored.arriving;
+          renderInventory();
+        }
+      };
+      gameRuntime.requestAnimationFrame(advance);
     }
 
     function spendItemGauge(level) {
@@ -2907,6 +2971,8 @@
     }
 
     function stopCombat() {
+      supplyCrate.clear();
+      document.querySelectorAll('.crate-reward-flight').forEach(image => image.remove());
       hostage.clear();
       document.querySelectorAll('.hostage-warning').forEach(popup => popup.remove());
       hall.cancelDodge();
@@ -2955,6 +3021,7 @@
     async function enterNextRoom(config, nextFloor) {
       if (floorTransition || stageEnded) return;
       floorTransition = true;
+      supplyCrate.clear();
       const startedAt = gameRuntime.now();
       const clearedWave = activeWaveId;
       gameStarted = false;
@@ -2995,6 +3062,7 @@
         hall.onCameraChange = () => {
           activeTargets.forEach(positionHallTarget);
           hostage.position();
+          supplyCrate.position();
         };
         hall.setCamera(config.camera);
         spawnSlots = config.slots;
@@ -3002,6 +3070,7 @@
         bossBattle = config.boss ? new BossBattle(config.boss) : null;
         hostage.enter(config.hostage);
         stageEnemyTotal = config.enemyTotal;
+        supplyCrate.resetRoom(stageEnemyTotal, window.TIMING_SHOOTER_CONFIG.waveTargets ?? 2);
         defeatedEnemies = 0;
         nextWaveReadyAt = 0;
         enemiesRemaining.textContent = String(stageEnemyTotal);
@@ -3318,8 +3387,7 @@ window.dispatchEvent(new CustomEvent("public-stage-clear", { detail: { shootScor
             startAt: wave.startAt
           });
         });
-        refreshHostageColor();
-        updateHostageInput();
+        beginCrateTurn();
         return;
       }
 
@@ -3335,8 +3403,7 @@ window.dispatchEvent(new CustomEvent("public-stage-clear", { detail: { shootScor
       }
       waveColors.sort(() => Math.random() - 0.5);
       waveColors.forEach((color, index) => makeTarget(color, availableSlots[index]));
-      refreshHostageColor();
-      updateHostageInput();
+      beginCrateTurn();
     }
 
     function updateBossEnemyCount() {
@@ -3608,6 +3675,8 @@ window.dispatchEvent(new CustomEvent("public-stage-clear", { detail: { shootScor
         return;
       }
       if (dodge.press(color)) return;
+      updateCrateInput();
+      if (supplyCrate.press(color)) return;
       updateHostageInput();
       if (hostage.press(color)) return;
       if (!hasUnjudgedTargets()) {
@@ -3666,6 +3735,7 @@ window.dispatchEvent(new CustomEvent("public-stage-clear", { detail: { shootScor
       dodge.update(gameRuntime.now());
       hall.updateDodge(gameRuntime.now());
       updateHostageInput();
+      updateCrateInput();
       activeTargets.forEach((target) => {
         if (target.judged) return;
         if (gameRuntime.now() < target.startTime) return;
