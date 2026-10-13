@@ -330,6 +330,18 @@
       transform: translate(-50%, -50%) scale(0.9);
     }
 
+    .enemy-knockdown {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      background-size: 400% 200%;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.6));
+    }
+
     .target-img {
       z-index: 2;
       width: var(--target-size);
@@ -1677,7 +1689,8 @@
     const enemySprites = {
       aim: 'sprites/enemies/mafia_gunman_aim_01.png',
       hit: 'sprites/enemies/mafia_gunman_hit_01.png',
-      graze: 'sprites/enemies/mafia_gunman_graze_01.png'
+      graze: 'sprites/enemies/mafia_gunman_graze_01.png',
+      knockdown: 'sprites/enemies/mafia_knockdown_atlas_v1.png'
     };
 
     const hostage = new Hostage(stage, () => hall, (civilian) => {
@@ -3067,6 +3080,27 @@ window.dispatchEvent(new CustomEvent("public-stage-clear", { detail: { shootScor
       });
     });
 
+    function playEnemyKnockdown(target) {
+      if (target.isBoss || !['Perfect', 'Great'].includes(target.hitJudgement)) return;
+      const sprite = document.createElement('div');
+      sprite.className = 'enemy-knockdown';
+      sprite.style.backgroundImage = `url("${enemySprites.knockdown}")`;
+      sprite.style.width = sprite.style.height = `${target.enemyHeight}px`;
+      // Fall toward the visible play area instead of beyond its nearest edge.
+      const facing = target.x > stage.clientWidth / 2 ? -1 : 1;
+      sprite.style.transform = `translate(-50%, -50%) scaleX(${facing})`;
+      const row = target.hitJudgement === 'Perfect' ? '0%' : '100%';
+      sprite.style.backgroundPosition = `0% ${row}`;
+      target.enemy.style.visibility = 'hidden';
+      target.enemy.parentElement.append(sprite);
+      target.knockdownSprite = sprite;
+      for (let frame = 1; frame < 4; frame++) {
+        gameRuntime.setTimeout(() => {
+          if (sprite.isConnected) sprite.style.backgroundPosition = `${frame * 100 / 3}% ${row}`;
+        }, frame * (target.hitJudgement === 'Perfect' ? 100 : 85));
+      }
+    }
+
     function finishTarget(target, reaction = 'hit') {
       if (stageEnded || floorTransition || !target || target.judged || !target.element.isConnected) return;
       if (target.isBoss) {
@@ -3093,6 +3127,7 @@ window.dispatchEvent(new CustomEvent("public-stage-clear", { detail: { shootScor
       finishedTarget.judge.classList.remove('visible');
       if (reaction !== 'none') {
         setEnemySprite(finishedTarget, enemySprites[reaction] ?? enemySprites.hit, reaction === 'hit' || reaction === 'graze');
+        playEnemyKnockdown(finishedTarget);
       }
       startDodgeTurnWhenReady();
       if (serverMode && !hasActiveOrCounteringTargets()) {
@@ -3245,6 +3280,9 @@ window.dispatchEvent(new CustomEvent("public-stage-clear", { detail: { shootScor
       target.element.style.left = `${target.x - circleBaseSize / 2}px`;
       target.element.style.top = `${centerY - circleBaseSize / 2}px`;
       target.enemy.style.height = `${height}px`;
+      if (target.knockdownSprite) {
+        target.knockdownSprite.style.width = target.knockdownSprite.style.height = `${height}px`;
+      }
       if (target.enemyCover) {
         // This mask stays still while the character rises behind the fountain.
         const bottomInset = centerY + circleBaseSize / 2 - stage.clientHeight * slot.clipBottomY;
@@ -3467,6 +3505,7 @@ window.dispatchEvent(new CustomEvent("public-stage-clear", { detail: { shootScor
       }
 
       showBulletEffect(target.x, target.y);
+      target.hitJudgement = text;
       const damage = damageForJudgement(text);
       const gaugeBonus = registerComboHit();
       showJudgement(text, colorText, target.x, judgementYFor(target));
