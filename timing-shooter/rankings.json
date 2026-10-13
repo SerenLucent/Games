@@ -3,8 +3,14 @@
   "game": "timing-shooter",
   "timeZone": "Asia/Seoul",
   "weekStart": "2026-10-11T15:00:00.000Z",
-  "updatedAt": "2026-10-13T11:07:44.598Z",
+  "updatedAt": "2026-10-13T11:34:25.630Z",
   "allTime": [
+    {
+      "runId": "1f804d4f-3c5b-41d9-88f5-86e513d470ae",
+      "name": "성히 win",
+      "score": 17322,
+      "savedAt": "2026-10-13T11:34:25.630Z"
+    },
     {
       "runId": "dabfc5eb-9364-4188-b254-2bef79bed88d",
       "name": "CKS",
@@ -58,16 +64,16 @@
       "name": "성히2",
       "score": 11072,
       "savedAt": "2026-10-13T10:16:41.327Z"
-    },
-    {
-      "runId": "2fec862f-422e-4b0f-8986-62dfabc10a5f",
-      "name": "jhg",
-      "score": 9525,
-      "savedAt": "2026-10-13T04:24:22.279Z"
     }
   ],
   "weekly": [
     {
+      "runId": "1f804d4f-3c5b-41d9-88f5-86e513d470ae",
+      "name": "성히 win",
+      "score": 17322,
+      "savedAt": "2026-10-13T11:34:25.630Z"
+    },
+    {
       "runId": "dabfc5eb-9364-4188-b254-2bef79bed88d",
       "name": "CKS",
       "score": 16810,
@@ -120,15 +126,15 @@
       "name": "성히2",
       "score": 11072,
       "savedAt": "2026-10-13T10:16:41.327Z"
-    },
-    {
-      "runId": "2fec862f-422e-4b0f-8986-62dfabc10a5f",
-      "name": "jhg",
-      "score": 9525,
-      "savedAt": "2026-10-13T04:24:22.279Z"
     }
   ],
   "receipts": [
+    {
+      "runId": "1f804d4f-3c5b-41d9-88f5-86e513d470ae",
+      "accepted": true,
+      "allTime": true,
+      "weekly": true
+    },
     {
       "runId": "95d138a5-ca0a-44bd-92ee-3adfc634e3a5",
       "accepted": true,
