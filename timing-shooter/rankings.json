@@ -3,7 +3,7 @@
   "game": "timing-shooter",
   "timeZone": "Asia/Seoul",
   "weekStart": "2026-10-11T15:00:00.000Z",
-  "updatedAt": "2026-10-13T04:24:22.279Z",
+  "updatedAt": "2026-10-13T08:01:00.201Z",
   "allTime": [
     {
       "runId": "dabfc5eb-9364-4188-b254-2bef79bed88d",
@@ -28,6 +28,12 @@
       "name": "jhg",
       "score": 9525,
       "savedAt": "2026-10-13T04:24:22.279Z"
+    },
+    {
+      "runId": "126a6074-17f5-4cfa-aaf7-a7469742483e",
+      "name": "성히",
+      "score": 8015,
+      "savedAt": "2026-10-13T08:01:00.201Z"
     }
   ],
   "weekly": [
@@ -54,9 +60,21 @@
       "name": "jhg",
       "score": 9525,
       "savedAt": "2026-10-13T04:24:22.279Z"
+    },
+    {
+      "runId": "126a6074-17f5-4cfa-aaf7-a7469742483e",
+      "name": "성히",
+      "score": 8015,
+      "savedAt": "2026-10-13T08:01:00.201Z"
     }
   ],
   "receipts": [
+    {
+      "runId": "126a6074-17f5-4cfa-aaf7-a7469742483e",
+      "accepted": true,
+      "allTime": true,
+      "weekly": true
+    },
     {
       "runId": "2fec862f-422e-4b0f-8986-62dfabc10a5f",
       "accepted": true,
