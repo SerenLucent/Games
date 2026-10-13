@@ -67,7 +67,15 @@ class SupplyCrate {
     const label = document.createElement('strong');
     label.textContent = 'PUSH';
     this.prompt.append(button, label);
-    this.element.append(this.body, this.reticle, this.prompt);
+    this.cue = document.createElement('div');
+    this.cue.className = 'supply-crate-cue';
+    const title = document.createElement('strong');
+    title.textContent = 'BREAK IT!';
+    const arrow = document.createElement('span');
+    arrow.className = 'supply-crate-arrow';
+    arrow.setAttribute('aria-hidden', 'true');
+    this.cue.append(title, arrow);
+    this.element.append(this.body, this.reticle, this.prompt, this.cue);
     this.stage.append(this.element);
     this.worldX = (this.getHall().camera + 0.5) / 2;
     this.position();
@@ -101,7 +109,11 @@ class SupplyCrate {
   setEnabled(enabled) {
     this.enabled = Boolean(enabled);
     if (this.reticle) this.reticle.hidden = !this.enabled || this.hits >= 20;
-    if (this.prompt) this.prompt.hidden = !this.enabled || this.hits >= 20 || gameRuntime.now() >= (this.promptUntil ?? 0);
+    if (this.prompt) {
+      this.prompt.hidden = !this.enabled || this.hits >= 20;
+      this.prompt.classList.toggle('rapid', gameRuntime.now() < (this.promptUntil ?? 0));
+    }
+    if (this.cue) this.cue.hidden = !this.enabled || this.hits >= 20;
   }
 
   press(color) {
@@ -115,7 +127,7 @@ class SupplyCrate {
       this.setEnabled(false);
       this.onReward({ x: this.x, y: this.y });
       this.removeTimer = gameRuntime.setTimeout(() => this.clear(), 350);
-    } else this.prompt.hidden = false;
+    } else this.setEnabled(true);
     return true;
   }
 
