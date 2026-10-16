@@ -5,6 +5,9 @@
 .public-ranking-header { display:flex; align-items:center; justify-content:space-between; gap:8px; }
 .public-ranking-header h2 { margin:0; color:#ffd754; font-size:24px; }
 .public-ranking-close { width:40px; height:40px; border:1px solid #606671; border-radius:4px; color:white; background:#242830; font-size:24px; }
+.public-ranking-close { flex:0 0 44px; width:44px; height:44px; }
+.public-ranking-stage { display:flex; align-items:center; gap:12px; margin:18px 0 0; font-size:14px; color:#c9cfd9; }
+.public-ranking-stage select { flex:1; min-width:0; min-height:44px; padding:8px; border:1px solid #929ba7; border-radius:4px; background:#252b34; color:#fff; font:16px system-ui; }
 .public-ranking-tabs { display:flex; margin:20px 0 12px; border-bottom:1px solid #565b64; }
 .public-ranking-tabs button { flex:1; padding:12px 4px; border:0; border-bottom:3px solid transparent; color:#c4c9d0; background:none; font-size:16px; }
 .public-ranking-tabs button[aria-selected=true] { color:#ffd754; border-bottom-color:#ffd754; }
