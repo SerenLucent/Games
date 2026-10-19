@@ -1,5 +1,11 @@
 (function () {
   const config = window.PUBLIC_RANKING_CONFIG;
+  const rankingStages = [
+    { id: 'stage1', title: '마피아 저택' },
+    { id: 'stage2', title: '검은 부두' },
+    { id: 'stage3', title: '마지막 배팅' },
+    { id: 'stage4', title: '백색 성역' }
+  ];
   const stage = document.getElementById('stage');
   const title = document.getElementById('titleScreen');
   const button = document.createElement('button');
@@ -9,7 +15,9 @@
   overlay.setAttribute('role', 'dialog'); overlay.setAttribute('aria-modal', 'true');
   overlay.setAttribute('aria-label', '스테이지별 TOP 10 랭킹');
   overlay.innerHTML = '<div class="public-ranking-header"><h2>1스테이지 랭킹</h2><button type="button" class="public-ranking-close" aria-label="Close ranking">&times;</button></div>'
-    + '<label class="public-ranking-stage">스테이지<select aria-label="랭킹 스테이지"><option value="stage1">STAGE 1 · 마피아 저택</option><option value="stage2">STAGE 2 · 검은 부두</option></select></label>'
+    + '<label class="public-ranking-stage">스테이지<select aria-label="랭킹 스테이지">'
+    + rankingStages.map((item, index) => `<option value="${item.id}">STAGE ${index + 1} · ${item.title}</option>`).join('')
+    + '</select></label>'
     + '<div class="public-ranking-score" hidden></div><form class="public-ranking-form" hidden><label for="rankingName">NAME</label><input id="rankingName" maxlength="20" autocomplete="nickname" required><button type="submit">REGISTER SCORE</button></form>'
     + '<div class="public-ranking-tabs" role="tablist"><button role="tab" aria-selected="true" data-board="weekly">주간</button><button role="tab" aria-selected="false" data-board="allTime">전체 기간</button></div>'
     + '<div class="public-ranking-status" role="status" aria-live="polite"></div><table class="public-ranking-table" hidden><thead><tr><th>RANK</th><th>NAME</th><th>SCORE</th></tr></thead><tbody></tbody></table><div class="public-ranking-empty" hidden></div>';
@@ -28,14 +36,14 @@
     return new Date(Date.UTC(kst.getUTCFullYear(), kst.getUTCMonth(), kst.getUTCDate() - (kst.getUTCDay() + 6) % 7) - 9 * 3600000).toISOString();
   }
   function acceptData(value) {
-    // A legacy server ignores stageId; never present its stage1 results as stage2.
+    // A legacy server ignores stageId; never present its results as another stage.
     if ((value.stageId || 'stage1') !== stageId) throw new Error('스테이지별 랭킹 서버 업데이트가 필요합니다.');
     data = { allTime: value.allTime || [], weekly: value.weekStart === weekStart(new Date()) ? value.weekly || [] : [] };
     render();
   }
   function render() {
     stageSelect.value = stageId;
-    overlay.querySelector('h2').textContent = `${stageId === 'stage2' ? 2 : 1}스테이지 랭킹`;
+    overlay.querySelector('h2').textContent = `${rankingStages.findIndex(item => item.id === stageId) + 1}스테이지 랭킹`;
     overlay.querySelectorAll('[data-board]').forEach(tab => tab.setAttribute('aria-selected', String(tab.dataset.board === board)));
     tbody.replaceChildren();
     const entries = data[board];
@@ -85,7 +93,7 @@
     const id = ++requestId;
     if (result) {
       const resultStage = result.stageId || window.TIMING_SHOOTER_STAGE_ID || 'stage1';
-      if (!['stage1', 'stage2'].includes(resultStage)) { status.textContent = '지원하지 않는 스테이지입니다.'; return; }
+      if (!rankingStages.some(item => item.id === resultStage)) { status.textContent = '지원하지 않는 스테이지입니다.'; return; }
       pending = { ...result, stageId: resultStage, runId: window.astGameRunId };
       stageId = resultStage;
       savedRunId = null;
@@ -163,7 +171,7 @@
     event.stopImmediatePropagation();
     if (event.key === 'Escape') { event.preventDefault(); dismiss(); }
     if (event.key === 'Tab') {
-      const targets = [...overlay.querySelectorAll('button:not(:disabled), input')].filter(element => element.getClientRects().length);
+      const targets = [...overlay.querySelectorAll('button:not(:disabled), input, select:not(:disabled)')].filter(element => element.getClientRects().length);
       const first = targets[0], last = targets.at(-1);
       if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
