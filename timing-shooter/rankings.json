@@ -282,6 +282,22 @@
           "weekly": true
         }
       ]
+    },
+    "stage3": {
+      "stageId": "stage3",
+      "weekStart": "2026-10-18T15:00:00.000Z",
+      "updatedAt": null,
+      "allTime": [],
+      "weekly": [],
+      "receipts": []
+    },
+    "stage4": {
+      "stageId": "stage4",
+      "weekStart": "2026-10-18T15:00:00.000Z",
+      "updatedAt": null,
+      "allTime": [],
+      "weekly": [],
+      "receipts": []
     }
   }
 }
