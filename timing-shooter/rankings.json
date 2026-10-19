@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "game": "timing-shooter",
   "timeZone": "Asia/Seoul",
-  "updatedAt": "2026-10-18T15:18:02.332Z",
+  "updatedAt": "2026-10-19T15:46:24.419Z",
   "stages": {
     "stage1": {
       "stageId": "stage1",
@@ -294,10 +294,34 @@
     "stage4": {
       "stageId": "stage4",
       "weekStart": "2026-10-18T15:00:00.000Z",
-      "updatedAt": null,
-      "allTime": [],
-      "weekly": [],
-      "receipts": []
+      "updatedAt": "2026-10-19T15:46:24.419Z",
+      "allTime": [
+        {
+          "runId": "e5c8f661-a018-45c2-ab72-120120170de9",
+          "stageId": "stage4",
+          "name": "성히",
+          "score": 17339,
+          "savedAt": "2026-10-19T15:46:24.419Z"
+        }
+      ],
+      "weekly": [
+        {
+          "runId": "e5c8f661-a018-45c2-ab72-120120170de9",
+          "stageId": "stage4",
+          "name": "성히",
+          "score": 17339,
+          "savedAt": "2026-10-19T15:46:24.419Z"
+        }
+      ],
+      "receipts": [
+        {
+          "runId": "e5c8f661-a018-45c2-ab72-120120170de9",
+          "stageId": "stage4",
+          "accepted": true,
+          "allTime": true,
+          "weekly": true
+        }
+      ]
     }
   }
 }
