@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "game": "timing-shooter",
   "timeZone": "Asia/Seoul",
-  "updatedAt": "2026-10-20T04:05:11.873Z",
+  "updatedAt": "2026-10-20T04:45:22.289Z",
   "stages": {
     "stage1": {
       "stageId": "stage1",
@@ -192,7 +192,7 @@
     "stage2": {
       "stageId": "stage2",
       "weekStart": "2026-10-18T15:00:00.000Z",
-      "updatedAt": "2026-10-18T10:22:48.426Z",
+      "updatedAt": "2026-10-20T04:45:22.289Z",
       "allTime": [
         {
           "runId": "e4029e1a-6d8f-4f68-8010-e25a23484abd",
@@ -207,6 +207,13 @@
           "name": "CKS ^^ ^",
           "score": 19342,
           "savedAt": "2026-10-17T00:24:17.431Z"
+        },
+        {
+          "runId": "12a69324-ebe6-4569-8496-794046b61c47",
+          "stageId": "stage2",
+          "name": "CKS",
+          "score": 18564,
+          "savedAt": "2026-10-20T04:45:22.289Z"
         },
         {
           "runId": "6ce33da7-0259-4022-b24f-34b32d60b6f7",
@@ -237,8 +244,23 @@
           "savedAt": "2026-10-16T05:51:09.214Z"
         }
       ],
-      "weekly": [],
+      "weekly": [
+        {
+          "runId": "12a69324-ebe6-4569-8496-794046b61c47",
+          "stageId": "stage2",
+          "name": "CKS",
+          "score": 18564,
+          "savedAt": "2026-10-20T04:45:22.289Z"
+        }
+      ],
       "receipts": [
+        {
+          "runId": "12a69324-ebe6-4569-8496-794046b61c47",
+          "stageId": "stage2",
+          "accepted": true,
+          "allTime": true,
+          "weekly": true
+        },
         {
           "runId": "e4029e1a-6d8f-4f68-8010-e25a23484abd",
           "stageId": "stage2",
