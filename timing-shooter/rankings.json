@@ -2,12 +2,12 @@
   "schemaVersion": 2,
   "game": "timing-shooter",
   "timeZone": "Asia/Seoul",
-  "updatedAt": "2026-10-21T11:08:49.305Z",
+  "updatedAt": "2026-10-22T13:34:06.614Z",
   "stages": {
     "stage1": {
       "stageId": "stage1",
       "weekStart": "2026-10-18T15:00:00.000Z",
-      "updatedAt": "2026-10-21T11:08:49.305Z",
+      "updatedAt": "2026-10-22T13:34:06.614Z",
       "allTime": [
         {
           "runId": "357cf241-aaed-4fe3-b25d-3126f50b3430",
@@ -94,9 +94,23 @@
           "name": "CKS",
           "score": 15635,
           "savedAt": "2026-10-21T11:08:49.305Z"
+        },
+        {
+          "runId": "b4959c95-4ea0-4a74-8c37-5424a3d93af6",
+          "stageId": "stage1",
+          "name": "지한",
+          "score": 9878,
+          "savedAt": "2026-10-22T13:34:06.614Z"
         }
       ],
       "receipts": [
+        {
+          "runId": "b4959c95-4ea0-4a74-8c37-5424a3d93af6",
+          "stageId": "stage1",
+          "accepted": true,
+          "allTime": false,
+          "weekly": true
+        },
         {
           "runId": "48c715d9-728f-4884-8b3c-ddfea4984c44",
           "stageId": "stage1",
