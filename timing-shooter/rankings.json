@@ -2,12 +2,12 @@
   "schemaVersion": 2,
   "game": "timing-shooter",
   "timeZone": "Asia/Seoul",
-  "updatedAt": "2026-10-22T14:37:30.387Z",
+  "updatedAt": "2026-10-23T16:40:12.693Z",
   "stages": {
     "stage1": {
       "stageId": "stage1",
       "weekStart": "2026-10-18T15:00:00.000Z",
-      "updatedAt": "2026-10-22T14:37:30.387Z",
+      "updatedAt": "2026-10-23T16:40:12.693Z",
       "allTime": [
         {
           "runId": "357cf241-aaed-4fe3-b25d-3126f50b3430",
@@ -96,6 +96,13 @@
           "savedAt": "2026-10-21T11:08:49.305Z"
         },
         {
+          "runId": "108eb1ea-2043-496d-a24b-33f7b492b763",
+          "stageId": "stage1",
+          "name": "RCQ",
+          "score": 14176,
+          "savedAt": "2026-10-23T16:40:12.693Z"
+        },
+        {
           "runId": "bc38e7fc-1d13-4c47-8492-63e62c8cc0a3",
           "stageId": "stage1",
           "name": "지한",
@@ -111,6 +118,13 @@
         }
       ],
       "receipts": [
+        {
+          "runId": "108eb1ea-2043-496d-a24b-33f7b492b763",
+          "stageId": "stage1",
+          "accepted": true,
+          "allTime": false,
+          "weekly": true
+        },
         {
           "runId": "bc38e7fc-1d13-4c47-8492-63e62c8cc0a3",
           "stageId": "stage1",
