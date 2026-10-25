@@ -2,11 +2,11 @@
   "schemaVersion": 2,
   "game": "timing-shooter",
   "timeZone": "Asia/Seoul",
-  "updatedAt": "2026-10-23T16:40:12.693Z",
+  "updatedAt": "2026-10-25T15:18:01.793Z",
   "stages": {
     "stage1": {
       "stageId": "stage1",
-      "weekStart": "2026-10-18T15:00:00.000Z",
+      "weekStart": "2026-10-25T15:00:00.000Z",
       "updatedAt": "2026-10-23T16:40:12.693Z",
       "allTime": [
         {
@@ -80,43 +80,7 @@
           "savedAt": "2026-10-21T11:08:49.305Z"
         }
       ],
-      "weekly": [
-        {
-          "runId": "c790166e-74dd-404c-8042-c5a473dfa95d",
-          "stageId": "stage1",
-          "name": "CKS",
-          "score": 17512,
-          "savedAt": "2026-10-21T00:57:32.151Z"
-        },
-        {
-          "runId": "48c715d9-728f-4884-8b3c-ddfea4984c44",
-          "stageId": "stage1",
-          "name": "CKS",
-          "score": 15635,
-          "savedAt": "2026-10-21T11:08:49.305Z"
-        },
-        {
-          "runId": "108eb1ea-2043-496d-a24b-33f7b492b763",
-          "stageId": "stage1",
-          "name": "RCQ",
-          "score": 14176,
-          "savedAt": "2026-10-23T16:40:12.693Z"
-        },
-        {
-          "runId": "bc38e7fc-1d13-4c47-8492-63e62c8cc0a3",
-          "stageId": "stage1",
-          "name": "지한",
-          "score": 11371,
-          "savedAt": "2026-10-22T14:37:30.387Z"
-        },
-        {
-          "runId": "b4959c95-4ea0-4a74-8c37-5424a3d93af6",
-          "stageId": "stage1",
-          "name": "지한",
-          "score": 9878,
-          "savedAt": "2026-10-22T13:34:06.614Z"
-        }
-      ],
+      "weekly": [],
       "receipts": [
         {
           "runId": "108eb1ea-2043-496d-a24b-33f7b492b763",
@@ -262,7 +226,7 @@
     },
     "stage2": {
       "stageId": "stage2",
-      "weekStart": "2026-10-18T15:00:00.000Z",
+      "weekStart": "2026-10-25T15:00:00.000Z",
       "updatedAt": "2026-10-20T04:45:22.289Z",
       "allTime": [
         {
@@ -315,15 +279,7 @@
           "savedAt": "2026-10-16T05:51:09.214Z"
         }
       ],
-      "weekly": [
-        {
-          "runId": "12a69324-ebe6-4569-8496-794046b61c47",
-          "stageId": "stage2",
-          "name": "CKS",
-          "score": 18564,
-          "savedAt": "2026-10-20T04:45:22.289Z"
-        }
-      ],
+      "weekly": [],
       "receipts": [
         {
           "runId": "12a69324-ebe6-4569-8496-794046b61c47",
@@ -378,7 +334,7 @@
     },
     "stage3": {
       "stageId": "stage3",
-      "weekStart": "2026-10-18T15:00:00.000Z",
+      "weekStart": "2026-10-25T15:00:00.000Z",
       "updatedAt": "2026-10-22T13:42:58.014Z",
       "allTime": [
         {
@@ -396,22 +352,7 @@
           "savedAt": "2026-10-22T13:42:58.014Z"
         }
       ],
-      "weekly": [
-        {
-          "runId": "bf3c828a-3344-4674-a0ad-64ef6c421e51",
-          "stageId": "stage3",
-          "name": "CKS",
-          "score": 18302,
-          "savedAt": "2026-10-20T04:05:11.873Z"
-        },
-        {
-          "runId": "35b35872-161a-4d71-aa9b-8a1c0d3790c0",
-          "stageId": "stage3",
-          "name": "성히",
-          "score": 17592,
-          "savedAt": "2026-10-22T13:42:58.014Z"
-        }
-      ],
+      "weekly": [],
       "receipts": [
         {
           "runId": "35b35872-161a-4d71-aa9b-8a1c0d3790c0",
@@ -431,7 +372,7 @@
     },
     "stage4": {
       "stageId": "stage4",
-      "weekStart": "2026-10-18T15:00:00.000Z",
+      "weekStart": "2026-10-25T15:00:00.000Z",
       "updatedAt": "2026-10-20T00:09:50.136Z",
       "allTime": [
         {
@@ -449,22 +390,7 @@
           "savedAt": "2026-10-20T00:09:50.136Z"
         }
       ],
-      "weekly": [
-        {
-          "runId": "e5c8f661-a018-45c2-ab72-120120170de9",
-          "stageId": "stage4",
-          "name": "성히",
-          "score": 17339,
-          "savedAt": "2026-10-19T15:46:24.419Z"
-        },
-        {
-          "runId": "a5c5e01e-85f8-4cea-b2ad-74c3ab85585e",
-          "stageId": "stage4",
-          "name": "CKS",
-          "score": 15395,
-          "savedAt": "2026-10-20T00:09:50.136Z"
-        }
-      ],
+      "weekly": [],
       "receipts": [
         {
           "runId": "a5c5e01e-85f8-4cea-b2ad-74c3ab85585e",
