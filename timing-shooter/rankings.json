@@ -2,11 +2,11 @@
   "schemaVersion": 2,
   "game": "timing-shooter",
   "timeZone": "Asia/Seoul",
-  "updatedAt": "2026-11-01T12:26:50.319Z",
+  "updatedAt": "2026-11-01T15:18:01.472Z",
   "stages": {
     "stage1": {
       "stageId": "stage1",
-      "weekStart": "2026-10-25T15:00:00.000Z",
+      "weekStart": "2026-11-01T15:00:00.000Z",
       "updatedAt": "2026-11-01T12:19:06.061Z",
       "allTime": [
         {
@@ -80,15 +80,7 @@
           "stageId": "stage1"
         }
       ],
-      "weekly": [
-        {
-          "runId": "8cca4893-77c0-4edc-a17f-0c8246c44e91",
-          "stageId": "stage1",
-          "name": "성히",
-          "score": 16822,
-          "savedAt": "2026-11-01T12:19:06.061Z"
-        }
-      ],
+      "weekly": [],
       "receipts": [
         {
           "runId": "8cca4893-77c0-4edc-a17f-0c8246c44e91",
@@ -241,7 +233,7 @@
     },
     "stage2": {
       "stageId": "stage2",
-      "weekStart": "2026-10-25T15:00:00.000Z",
+      "weekStart": "2026-11-01T15:00:00.000Z",
       "updatedAt": "2026-11-01T12:26:50.319Z",
       "allTime": [
         {
@@ -301,15 +293,7 @@
           "savedAt": "2026-10-16T05:51:09.214Z"
         }
       ],
-      "weekly": [
-        {
-          "runId": "54aa51dc-760e-44e5-8237-ae3cf8231061",
-          "stageId": "stage2",
-          "name": "성히",
-          "score": 13354,
-          "savedAt": "2026-11-01T12:26:50.319Z"
-        }
-      ],
+      "weekly": [],
       "receipts": [
         {
           "runId": "54aa51dc-760e-44e5-8237-ae3cf8231061",
@@ -371,7 +355,7 @@
     },
     "stage3": {
       "stageId": "stage3",
-      "weekStart": "2026-10-25T15:00:00.000Z",
+      "weekStart": "2026-11-01T15:00:00.000Z",
       "updatedAt": "2026-10-22T13:42:58.014Z",
       "allTime": [
         {
@@ -409,7 +393,7 @@
     },
     "stage4": {
       "stageId": "stage4",
-      "weekStart": "2026-10-25T15:00:00.000Z",
+      "weekStart": "2026-11-01T15:00:00.000Z",
       "updatedAt": "2026-10-20T00:09:50.136Z",
       "allTime": [
         {
