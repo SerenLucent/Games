@@ -2,11 +2,11 @@
   "schemaVersion": 2,
   "game": "timing-shooter",
   "timeZone": "Asia/Seoul",
-  "updatedAt": "2026-11-01T15:18:01.472Z",
+  "updatedAt": "2026-11-08T15:18:02.017Z",
   "stages": {
     "stage1": {
       "stageId": "stage1",
-      "weekStart": "2026-11-01T15:00:00.000Z",
+      "weekStart": "2026-11-08T15:00:00.000Z",
       "updatedAt": "2026-11-01T12:19:06.061Z",
       "allTime": [
         {
@@ -233,7 +233,7 @@
     },
     "stage2": {
       "stageId": "stage2",
-      "weekStart": "2026-11-01T15:00:00.000Z",
+      "weekStart": "2026-11-08T15:00:00.000Z",
       "updatedAt": "2026-11-01T12:26:50.319Z",
       "allTime": [
         {
@@ -355,7 +355,7 @@
     },
     "stage3": {
       "stageId": "stage3",
-      "weekStart": "2026-11-01T15:00:00.000Z",
+      "weekStart": "2026-11-08T15:00:00.000Z",
       "updatedAt": "2026-10-22T13:42:58.014Z",
       "allTime": [
         {
@@ -393,7 +393,7 @@
     },
     "stage4": {
       "stageId": "stage4",
-      "weekStart": "2026-11-01T15:00:00.000Z",
+      "weekStart": "2026-11-08T15:00:00.000Z",
       "updatedAt": "2026-10-20T00:09:50.136Z",
       "allTime": [
         {
